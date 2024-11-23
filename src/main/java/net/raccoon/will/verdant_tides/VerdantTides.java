@@ -1,5 +1,6 @@
 package net.raccoon.will.verdant_tides;
 
+import net.raccoon.will.verdant_tides.misc.VTCreativeTab;
 import net.raccoon.will.verdant_tides.registry.VTBlockRegistry;
 import net.raccoon.will.verdant_tides.registry.VTItemRegistry;
 import org.slf4j.Logger;
@@ -31,10 +32,11 @@ public class VerdantTides {
         modEventBus.addListener(this::commonSetup);
 
         NeoForge.EVENT_BUS.register(this);
-         
 
+        VTCreativeTab.register(modEventBus);
         VTItemRegistry.register(modEventBus);
         VTBlockRegistry.register(modEventBus);
+
 
 
         modEventBus.addListener(this::addCreative);
