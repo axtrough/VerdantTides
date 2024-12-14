@@ -1,0 +1,9 @@
+{
+  "bracelet_equip": {
+    "subtitles": "sounds.verdanttides.bracelet_equip",
+    "sounds": [
+      "verdanttides:bracelet_equip"
+    ],
+    "stream": false
+  }
+}

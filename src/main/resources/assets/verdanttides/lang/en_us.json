@@ -1,4 +1,8 @@
 {
-"item.verdanttides.sword_of_haldor": "Sword Of Haldor",
-  "creativetab.verdanttides.verdanttides_tab": "Verdant Tides"
+  "creativetab.verdanttides.verdanttides_tab": "Verdant Tides",
+
+  "item.verdanttides.littlefriend": "Little Friend",
+  "item.verdanttides.aqua_bracelet": "Aqua Bracelet",
+
+  "sounds.verdanttides.bracelet_equip": "Aqua Bracelet Equipped"
 }

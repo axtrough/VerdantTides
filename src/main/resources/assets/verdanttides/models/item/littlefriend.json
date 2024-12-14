@@ -1,0 +1,20 @@
+{
+  "parent": "minecraft:item/handheld",
+  "loader": "neoforge:separate_transforms",
+  "base": {
+    "parent": "verdanttides:item/littlefriend_held"
+  },
+  "perspectives": {
+    "gui": {
+      "parent": "verdanttides:item/littlefriend_item"
+    },
+    "ground": {
+      "parent": "verdanttides:item/littlefriend_item"
+    },
+    "fixed": {
+      "parent": "verdanttides:item/littlefriend_held"
+    }
+  }
+}
+
+

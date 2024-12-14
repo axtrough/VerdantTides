@@ -1,7 +1,7 @@
 {
   "parent": "verdanttides:item/big_handheld",
   "textures": {
-    "layer0": "verdanttides:item/haldor_held"
+    "layer0": "verdanttides:item/littlefriend_held"
   }
 }
 

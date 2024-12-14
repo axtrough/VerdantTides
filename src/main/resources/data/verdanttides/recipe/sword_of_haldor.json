@@ -13,9 +13,9 @@
     }
   },
   "pattern": [
-    " GC",
-    "GCG",
-    "SG "
+    " CG",
+    "CGC",
+    "SC "
   ],
   "result": {
     "count": 1,

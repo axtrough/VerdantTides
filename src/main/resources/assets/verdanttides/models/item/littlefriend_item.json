@@ -1,6 +1,6 @@
 {
   "parent": "minecraft:item/handheld",
   "textures": {
-    "layer0": "verdanttides:item/haldor_item"
+    "layer0": "verdanttides:item/littlefriend_item"
   }
 }

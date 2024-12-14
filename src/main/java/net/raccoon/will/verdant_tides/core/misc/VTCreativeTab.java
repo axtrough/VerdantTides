@@ -1,4 +1,4 @@
-package net.raccoon.will.verdant_tides.misc;
+package net.raccoon.will.verdant_tides.core.misc;
 
 import net.minecraft.core.registries.Registries;
 import net.minecraft.network.chat.Component;
@@ -7,7 +7,7 @@ import net.minecraft.world.item.ItemStack;
 import net.neoforged.bus.api.IEventBus;
 import net.neoforged.neoforge.registries.DeferredRegister;
 import net.raccoon.will.verdant_tides.VerdantTides;
-import net.raccoon.will.verdant_tides.registry.VTItemRegistry;
+import net.raccoon.will.verdant_tides.registries.VTItemRegistry;
 
 import java.util.function.Supplier;
 
@@ -17,11 +17,11 @@ public class VTCreativeTab {
 
     public static final Supplier<CreativeModeTab> VERDANT_TIDES_TAB = CREATIVE_MODE_TAB.register("verdanttides_tab",
             () -> CreativeModeTab.builder()
-                    .icon(() -> new ItemStack(VTItemRegistry.SWORD_OF_HALDOR.get()))
+                    .icon(() -> new ItemStack(VTItemRegistry.LITTLEFRIEND.get()))
                     .title(Component.translatable("creativetab.verdanttides.verdanttides_tab"))
                     .displayItems((parameters, output) -> {
-
-                        output.accept(VTItemRegistry.SWORD_OF_HALDOR);
+                        output.accept(VTItemRegistry.AQUA_BRACELET);
+                        output.accept(VTItemRegistry.LITTLEFRIEND);
 
 
 
