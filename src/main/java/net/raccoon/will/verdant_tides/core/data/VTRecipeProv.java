@@ -2,14 +2,14 @@ package net.raccoon.will.verdant_tides.core.data;
 
 import net.minecraft.core.HolderLookup;
 import net.minecraft.data.PackOutput;
-import net.minecraft.data.recipes.RecipeCategory;
-import net.minecraft.data.recipes.RecipeOutput;
-import net.minecraft.data.recipes.RecipeProvider;
-import net.minecraft.data.recipes.SimpleCookingRecipeBuilder;
+import net.minecraft.data.recipes.*;
+import net.minecraft.world.item.Items;
 import net.minecraft.world.item.crafting.*;
 import net.minecraft.world.level.ItemLike;
 import net.neoforged.neoforge.common.conditions.IConditionBuilder;
 import net.raccoon.will.verdant_tides.VerdantTides;
+import net.raccoon.will.verdant_tides.registries.VTItemRegistry;
+import org.jetbrains.annotations.NotNull;
 
 import java.util.List;
 import java.util.concurrent.CompletableFuture;
@@ -20,12 +20,16 @@ public class VTRecipeProv extends RecipeProvider implements IConditionBuilder {
     }
 
     @Override
-    protected void buildRecipes(RecipeOutput recipeOutput) { //Recipes
+    protected void buildRecipes(@NotNull RecipeOutput recipeOutput) { //Recipes
 
 
-
-
-
+        ShapedRecipeBuilder.shaped(RecipeCategory.MISC, VTItemRegistry.AQUA_BRACELET.get())
+                .pattern("HHH")
+                .pattern("HTH")
+                .pattern("HHH")
+                .define('H', Items.HEART_OF_THE_SEA)
+                .define('T', Items.TURTLE_HELMET)
+                .unlockedBy("has_heart_of_the_sea", has(Items.HEART_OF_THE_SEA)).save(recipeOutput);
 
     }
 
