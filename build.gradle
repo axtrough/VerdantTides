@@ -95,15 +95,12 @@ configurations {
 }
 
 dependencies {
-    runtimeOnly ("dev.emi:emi-neoforge:${emi_version}")
-    runtimeOnly("maven.modrinth:sodium:${sodium_version}")
-    runtimeOnly("maven.modrinth:iris:${iris_version}")
+
     implementation ("top.theillusivec4.curios:curios-neoforge:${curios_version}")
-
-    implementation "curse.maven:worldedit-225608:5830452"
-
-    compileOnly 'org.projectlombok:lombok:1.18.36'
-    annotationProcessor 'org.projectlombok:lombok:1.18.36'
+    compileOnly("dev.emi:emi-neoforge:${emi_version}")
+    compileOnly("maven.modrinth:sodium:${sodium_version}")
+    compileOnly("maven.modrinth:iris:${iris_version}")
+    compileOnly("curse.maven:worldedit-225608:5830452")
 
 }
 
