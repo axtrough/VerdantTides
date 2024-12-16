@@ -17,7 +17,6 @@ import net.raccoon.will.verdant_tides.registries.VTSounds;
 import top.theillusivec4.curios.api.SlotContext;
 import top.theillusivec4.curios.api.type.capability.ICurioItem;
 
-import java.util.Objects;
 
 public class AquaBracelet extends Item implements ICurioItem {
     private boolean jumping;
@@ -26,16 +25,6 @@ public class AquaBracelet extends Item implements ICurioItem {
         super(new Properties().stacksTo(1));
     }
 
-    public void travel(Vec3 travelVector, Player player) {
-        if (player.isEffectiveAi() && player.isInWater()) {
-            player.moveRelative(player.getSpeed(), travelVector);
-            player.move(MoverType.SELF, player.getDeltaMovement());
-            player.setDeltaMovement(player.getDeltaMovement().scale(0.9));
-
-        }
-    }
-
-
     @Override
     public void onEquip(SlotContext slotContext, ItemStack prevStack, ItemStack stack) {
         Player player = (Player) slotContext.entity();
@@ -43,60 +32,59 @@ public class AquaBracelet extends Item implements ICurioItem {
 
         level.playSound(null, player.getX(), player.getY(), player.getZ(),
                 VTSounds.BRACELET_EQUIP, SoundSource.PLAYERS,
-                1.0F, 1.0F);
-        //this actually made me so mad. dont know how but i somehow flew around and around on how to do this...
-        // also it works perfectly as intended :333333
+                1F, 0.9F);
     }
 
 
     @Override
     public void curioTick(SlotContext slotContext, ItemStack stack) {
-        Player player = (Player) slotContext.entity();
-        CompoundTag data = player.getPersistentData();
-        double dashStrength = 0.32;
+            Player player = (Player) slotContext.entity();
+            CompoundTag data = player.getPersistentData();
+            boolean hasDashed = data.getBoolean("HasDashed");
+
         boolean isNowInWater = player.isInWater();
-        boolean hasDashed = data.getBoolean("HasDashed");
+
         boolean isInWater = player.isEyeInFluidType(Fluids.WATER.getFluidType());
-        boolean hasAquaAbility = !Objects.equals(player.getEffect(MobEffects.WATER_BREATHING), null) &&
-                !Objects.equals(player.getEffect(MobEffects.DOLPHINS_GRACE), null);
 
-        if (!isInWater && isNowInWater && !hasDashed) {
+        if (player.isSwimming() && isInWater) {
+            Vec3 lookie = player.getLookAngle();
+            Vec3 addSwimSpeed = lookie.scale(0.03);
+            addSwimSpeed = new Vec3(addSwimSpeed.x, addSwimSpeed.y, addSwimSpeed.z);
+            player.addDeltaMovement(addSwimSpeed);
 
+
+        } else if (!isInWater && !isNowInWater && !hasDashed) {
+            double dashStrength = 0.32;
             Vec3 lookDirection = player.getLookAngle();
             Vec3 dashVelocity = lookDirection.scale(dashStrength);
             dashVelocity = new Vec3(dashVelocity.x, dashVelocity.y, dashVelocity.z);
             player.addDeltaMovement(dashVelocity);
             data.putBoolean("HasDashed", true);
-            //this is needs fixing because when you swim at the water surface, you get an extra speed boost.
 
 
+            double adjustedHorizontalSpeed = 1.65;
             Vec3 currentVelocity = player.getDeltaMovement();
-            double adjustedHorizontalSpeed = 1.5;
             player.setDeltaMovement(
                     currentVelocity.x * adjustedHorizontalSpeed,
-                    currentVelocity.y * adjustedHorizontalSpeed,
-                    currentVelocity.z * adjustedHorizontalSpeed);
+                currentVelocity.y * adjustedHorizontalSpeed,
+            currentVelocity.z * adjustedHorizontalSpeed);
         }
         if (isNowInWater && isInWater) {
             data.putBoolean("HasDashed", false);
+
         }
 
-
-        if (!hasAquaAbility && player.isInWater()) {
-            player.addEffect(new MobEffectInstance(MobEffects.WATER_BREATHING, 300, 0, false, false));
-            player.addEffect(new MobEffectInstance(MobEffects.DOLPHINS_GRACE, 300, 0, false, false));
-
+        if (player.isInWater()) {
+            player.addEffect(new MobEffectInstance(MobEffects.WATER_BREATHING,
+                    300, 0, false, false));
 
         } else if (!player.isInWater()) {
             player.removeEffect(MobEffects.WATER_BREATHING);
-            player.removeEffect(MobEffects.DOLPHINS_GRACE);
-
 
             ICurioItem.super.curioTick(slotContext, stack);
         }
     }
 }
-
 
 
 
