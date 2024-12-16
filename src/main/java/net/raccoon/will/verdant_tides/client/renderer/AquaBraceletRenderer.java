@@ -60,7 +60,7 @@ public class AquaBraceletRenderer implements ICurioRenderer {
         headPart.visible = false;
 
         VertexConsumer vertexconsumer = ItemRenderer
-                .getArmorFoilBuffer(renderTypeBuffer, RenderType.armorCutoutNoCull(AQUA_BRACELET_TEXTURE), stack.hasFoil());
+                .getArmorFoilBuffer(renderTypeBuffer, RenderType.breezeEyes(AQUA_BRACELET_TEXTURE), stack.hasFoil());
         this.model.renderToBuffer(matrixStack, vertexconsumer, LightTexture.FULL_BRIGHT, OverlayTexture.NO_OVERLAY);
 
     }
