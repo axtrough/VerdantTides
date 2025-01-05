@@ -7,7 +7,7 @@ import net.neoforged.bus.api.SubscribeEvent;
 import net.neoforged.fml.common.EventBusSubscriber;
 import net.neoforged.neoforge.event.entity.player.PlayerEvent;
 import net.raccoon.will.verdant_tides.VerdantTides;
-import net.raccoon.will.verdant_tides.registries.VTItemRegistry;
+import net.raccoon.will.verdant_tides.registries.VTItems;
 import top.theillusivec4.curios.api.CuriosApi;
 import top.theillusivec4.curios.api.SlotResult;
 
@@ -20,7 +20,7 @@ public class UnderwaterBreakSpeedEvent {
     @SubscribeEvent
     public static void onBreakSpeed(PlayerEvent.BreakSpeed event) {
         Player player = event.getEntity();
-        Item itemToCheck = VTItemRegistry.AQUA_BRACELET.get();
+        Item itemToCheck = VTItems.AQUA_BRACELET.get();
 
         if (player.isUnderWater() && isWearingCurio(player, itemToCheck)) {
             float originalSpeed = event.getOriginalSpeed();
@@ -29,7 +29,7 @@ public class UnderwaterBreakSpeedEvent {
     }
 
     private static void checkCurioItem(Player player, Item item) {
-        List<SlotResult> results = CuriosApi.getCuriosHelper().findCurios(player, VTItemRegistry.AQUA_BRACELET.get());
+        List<SlotResult> results = CuriosApi.getCuriosHelper().findCurios(player, VTItems.AQUA_BRACELET.get());
     }
 
     private static boolean isWearingCurio(Player player, Item item) {

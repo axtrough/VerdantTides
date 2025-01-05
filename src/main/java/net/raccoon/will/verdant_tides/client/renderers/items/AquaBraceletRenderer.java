@@ -1,4 +1,4 @@
-package net.raccoon.will.verdant_tides.client.renderer;
+package net.raccoon.will.verdant_tides.client.renderers.items;
 
 import com.mojang.blaze3d.vertex.PoseStack;
 import com.mojang.blaze3d.vertex.VertexConsumer;
@@ -16,7 +16,7 @@ import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.item.ItemStack;
 import net.raccoon.will.verdant_tides.VerdantTides;
 import net.raccoon.will.verdant_tides.client.CuriosLayerDefinitions;
-import net.raccoon.will.verdant_tides.client.model.AquaBraceletModel;
+import net.raccoon.will.verdant_tides.client.model.items.AquaBraceletModel;
 import net.raccoon.will.verdant_tides.common.item.AquaBracelet;
 import top.theillusivec4.curios.api.SlotContext;
 import top.theillusivec4.curios.api.client.ICurioRenderer;

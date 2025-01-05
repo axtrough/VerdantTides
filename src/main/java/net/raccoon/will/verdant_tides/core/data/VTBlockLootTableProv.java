@@ -14,7 +14,7 @@ import net.minecraft.world.level.storage.loot.entries.LootItem;
 import net.minecraft.world.level.storage.loot.functions.ApplyBonusCount;
 import net.minecraft.world.level.storage.loot.functions.SetItemCountFunction;
 import net.minecraft.world.level.storage.loot.providers.number.UniformGenerator;
-import net.raccoon.will.verdant_tides.registries.VTBlockRegistry;
+import net.raccoon.will.verdant_tides.registries.VTBlocks;
 
 import java.util.Set;
 
@@ -41,6 +41,6 @@ public class VTBlockLootTableProv extends BlockLootSubProvider {
     }
         @Override
     protected Iterable<Block> getKnownBlocks() {
-        return VTBlockRegistry.BLOCKS.getEntries().stream().map(Holder::value)::iterator;
+        return VTBlocks.BLOCKS.getEntries().stream().map(Holder::value)::iterator;
     }
 }

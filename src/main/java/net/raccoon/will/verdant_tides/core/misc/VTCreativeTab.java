@@ -7,7 +7,7 @@ import net.minecraft.world.item.ItemStack;
 import net.neoforged.bus.api.IEventBus;
 import net.neoforged.neoforge.registries.DeferredRegister;
 import net.raccoon.will.verdant_tides.VerdantTides;
-import net.raccoon.will.verdant_tides.registries.VTItemRegistry;
+import net.raccoon.will.verdant_tides.registries.VTItems;
 
 import java.util.function.Supplier;
 
@@ -17,11 +17,11 @@ public class VTCreativeTab {
 
     public static final Supplier<CreativeModeTab> VERDANT_TIDES_TAB = CREATIVE_MODE_TAB.register("verdanttides_tab",
             () -> CreativeModeTab.builder()
-                    .icon(() -> new ItemStack(VTItemRegistry.LITTLEFRIEND.get()))
+                    .icon(() -> new ItemStack(VTItems.LITTLEFRIEND.get()))
                     .title(Component.translatable("creativetab.verdanttides.verdanttides_tab"))
                     .displayItems((parameters, output) -> {
-                        output.accept(VTItemRegistry.AQUA_BRACELET);
-                        output.accept(VTItemRegistry.LITTLEFRIEND);
+                        output.accept(VTItems.AQUA_BRACELET);
+                        output.accept(VTItems.LITTLEFRIEND);
 
 
 

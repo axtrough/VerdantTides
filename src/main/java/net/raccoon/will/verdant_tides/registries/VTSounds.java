@@ -20,7 +20,6 @@ public class VTSounds {
                 SoundEvent.createVariableRangeEvent(ResourceLocation.fromNamespaceAndPath(VerdantTides.MODID, name)));
     }
 
-    public static void register(IEventBus eventBus) {
-        SOUND_EVENTS.register(eventBus);
+    public static void register(IEventBus eventBus) {SOUND_EVENTS.register(eventBus);
     }
 }

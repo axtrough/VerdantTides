@@ -8,7 +8,7 @@ import net.minecraft.world.item.crafting.*;
 import net.minecraft.world.level.ItemLike;
 import net.neoforged.neoforge.common.conditions.IConditionBuilder;
 import net.raccoon.will.verdant_tides.VerdantTides;
-import net.raccoon.will.verdant_tides.registries.VTItemRegistry;
+import net.raccoon.will.verdant_tides.registries.VTItems;
 import org.jetbrains.annotations.NotNull;
 
 import java.util.List;
@@ -23,7 +23,7 @@ public class VTRecipeProv extends RecipeProvider implements IConditionBuilder {
     protected void buildRecipes(@NotNull RecipeOutput recipeOutput) { //Recipes
 
 
-        ShapedRecipeBuilder.shaped(RecipeCategory.MISC, VTItemRegistry.AQUA_BRACELET.get())
+        ShapedRecipeBuilder.shaped(RecipeCategory.MISC, VTItems.AQUA_BRACELET.get())
                 .pattern("HHH")
                 .pattern("HTH")
                 .pattern("HHH")

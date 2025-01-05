@@ -11,37 +11,25 @@ import net.raccoon.will.verdant_tides.VerdantTides;
 import java.util.function.Supplier;
 
 
-public class VTBlockRegistry {
+public class VTBlocks {
     public static final DeferredRegister.Blocks BLOCKS = DeferredRegister.createBlocks(VerdantTides.MODID);
 
 
 
 
 
-
-
-    //SPACING
-
     private static <T extends Block> DeferredBlock<T> registerBlock(String name, Supplier<T> block, boolean registerItem) {
         DeferredBlock<T> toReturn = BLOCKS.register(name, block);
         if (registerItem) {
-            registerBlockItem(name, toReturn);
+            VTItems.ITEMS.register(name, () -> new BlockItem(toReturn.get(), new Item.Properties()));
         }
         return toReturn;
     }
-
     private static <T extends Block> DeferredBlock<T> registerBlock(String name, Supplier<T> block) {
-        DeferredBlock<T> toReturn = BLOCKS.register(name, block);
-        registerBlockItem(name, toReturn);
-        return toReturn;
+        return registerBlock(name, block, true);
     }
 
-    private static <T extends Block> void registerBlockItem(String name, DeferredBlock<T> block) {
-        VTItemRegistry.ITEMS.register(name, () -> new BlockItem(block.get(), new Item.Properties()));
-    }
-
-    public static void register(IEventBus eventBus) {
-        BLOCKS.register(eventBus);
+    public static void register(IEventBus eventBus) {BLOCKS.register(eventBus);
     }
 }
 

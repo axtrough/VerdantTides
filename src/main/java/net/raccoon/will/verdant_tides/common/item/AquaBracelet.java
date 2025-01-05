@@ -29,13 +29,15 @@ public class AquaBracelet extends Item implements ICurioItem {
         if (isNowInWater) {
             Vec3 movement = isSwimming ? player.getLookAngle().scale(0.03) : player.getKnownMovement().scale(0.15);
             player.addDeltaMovement(movement);
-        } else if (!isNowInWater && !hasDashed && !isCrouching) {
+        }
+        else if (!isNowInWater && !hasDashed && !isCrouching) {
             double dashStrength = 0.75;
             Vec3 lookDirection = player.getLookAngle();
             Vec3 dashVelocity = lookDirection.scale(dashStrength).multiply(1.1, 1.0, 1.1);
             player.addDeltaMovement(dashVelocity);
             data.putBoolean("HasDashed", true);
-        } if (isNowInWater && hasDashed) {
+        }
+        if (isNowInWater && hasDashed) {
             data.putBoolean("HasDashed", false);
         }
 

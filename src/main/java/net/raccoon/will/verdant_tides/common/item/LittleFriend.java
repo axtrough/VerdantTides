@@ -6,8 +6,8 @@ import net.minecraft.world.item.SwordItem;
 import net.minecraft.world.item.Tier;
 import net.minecraft.world.item.context.UseOnContext;
 
-public class ItemLittleFriend extends SwordItem {
-    public ItemLittleFriend(Tier tier, Properties properties) {
+public class LittleFriend extends SwordItem {
+    public LittleFriend(Tier tier, Properties properties) {
         super(tier, properties);
     }
 

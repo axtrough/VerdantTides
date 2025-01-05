@@ -15,12 +15,10 @@ import net.neoforged.neoforge.common.NeoForge;
 import net.neoforged.neoforge.event.BuildCreativeModeTabContentsEvent;
 import net.neoforged.neoforge.event.server.ServerStartingEvent;
 import net.raccoon.will.verdant_tides.client.CuriosLayerDefinitions;
-import net.raccoon.will.verdant_tides.client.model.AquaBraceletModel;
-import net.raccoon.will.verdant_tides.client.renderer.AquaBraceletRenderer;
+import net.raccoon.will.verdant_tides.client.model.items.AquaBraceletModel;
+import net.raccoon.will.verdant_tides.client.renderers.items.AquaBraceletRenderer;
 import net.raccoon.will.verdant_tides.core.misc.VTCreativeTab;
-import net.raccoon.will.verdant_tides.registries.VTBlockRegistry;
-import net.raccoon.will.verdant_tides.registries.VTItemRegistry;
-import net.raccoon.will.verdant_tides.registries.VTSounds;
+import net.raccoon.will.verdant_tides.registries.*;
 import org.slf4j.Logger;
 import top.theillusivec4.curios.api.client.CuriosRendererRegistry;
 
@@ -32,20 +30,18 @@ public class VerdantTides {
 
     public VerdantTides(IEventBus modEventBus, ModContainer modContainer) {
         modEventBus.addListener(this::setup);
-
         NeoForge.EVENT_BUS.register(this);
 
+        VTItems.register(modEventBus);
         VTSounds.register(modEventBus);
+        VTBlocks.register(modEventBus);
+        VTParticles.register(modEventBus);
         VTCreativeTab.register(modEventBus);
-        VTItemRegistry.register(modEventBus);
-        VTBlockRegistry.register(modEventBus);
-
 
         modEventBus.addListener(this::addCreative);
     }
 
     public void setup(final FMLCommonSetupEvent event) {
-
     }
 
     private void addCreative(BuildCreativeModeTabContentsEvent event) {
@@ -60,7 +56,7 @@ public class VerdantTides {
 
         @SubscribeEvent
         public static void onClientSetup(FMLClientSetupEvent event) {
-            CuriosRendererRegistry.register((VTItemRegistry.AQUA_BRACELET.get()), AquaBraceletRenderer::new);
+            CuriosRendererRegistry.register((VTItems.AQUA_BRACELET.get()), AquaBraceletRenderer::new);
 
         }
 

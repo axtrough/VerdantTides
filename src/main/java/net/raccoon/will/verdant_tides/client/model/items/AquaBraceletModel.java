@@ -1,4 +1,4 @@
-package net.raccoon.will.verdant_tides.client.model;
+package net.raccoon.will.verdant_tides.client.model.items;
 
 
 import com.google.common.collect.ImmutableList;
