@@ -39,44 +39,15 @@ public class AquaBracelet extends Item implements ICurioItem {
             Vec3 dashVelocity = lookDirection.scale(dashStrength).multiply(1.2, 1.2, 1.2);
             player.addDeltaMovement(dashVelocity);
             player.setForcedPose(Pose.FALL_FLYING);
-            player.getDeltaMovement().multiply(0.5,0.5,0.5);
+            player.getDeltaMovement().multiply(0.5, 0.5, 0.5);
             data.putBoolean("hasDashed", true);
         }
 
         if (hasDashed && isNowInWater) {
             data.putBoolean("hasDashed", false);
-        }else if (hasDashed && player.onGround())
+        } else if (hasDashed && player.onGround())
             player.setForcedPose(null);
 
-            ICurioItem.super.curioTick(slotContext, stack);
+        ICurioItem.super.curioTick(slotContext, stack);
     }
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
